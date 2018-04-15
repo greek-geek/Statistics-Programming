@@ -1,0 +1,52 @@
+* Linear and Logistic Regression in SAS;
+* Copyright 2013 by Ani Katchova;
+
+proc import out= work.data
+datafile= "/folders/myfolders/study1/regression_auto.csv"
+dbms=csv replace; getnames=yes; datarow=2;
+run;
+
+* Descriptive statistics;
+proc means data=data;
+var mpg weight1 price foreign;
+run;
+
+* Detailed descriptive statistics;
+proc univariate data=data;
+var mpg;
+run;
+
+* Correlations;
+proc corr data=data;
+var mpg weight1 price foreign;
+run;
+
+* Plotting the data;
+proc sgplot data=data;
+scatter x = mpg y = weight1;
+run;
+
+* Simple linear regression;
+proc reg data=data;
+model mpg = weight1;
+run;
+
+* Multiple linear regression;
+proc reg data=data;
+model mpg = weight1 price foreign;
+run;
+
+* Standardize the data
+proc stdize data=data out=data2 method=STD;
+var weight1 mpg price;
+run;
+
+* Simple logistic regression;
+proc logistic data=data2;
+model foreign = weight1;
+run;
+
+* Multiple logistic regression;
+proc logistic data=data2;
+model foreign = price mpg;
+run;

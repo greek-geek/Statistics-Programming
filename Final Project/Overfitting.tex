@@ -1,0 +1,397 @@
+
+
+\documentclass[11pt]{article}
+
+
+\usepackage{geometry}
+\geometry{letterpaper}                   
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+
+\usepackage{tikz}
+ \usepackage{pgf,tikz}
+\usetikzlibrary{matrix}
+
+\usepackage{comment}
+
+
+\renewcommand{\baselinestretch}{1.}
+%\setcounter{page}{0} \thispagestyle{empty}
+
+\setlength{\topmargin}{-0.60in} \setlength{\oddsidemargin}{-0.2in}
+\setlength{\textwidth}{6.5in} \setlength{\textheight}{9in}
+
+
+\newcommand{\E}{\mathbb{E}}
+\def\Var{{\rm Var}}
+\def\Cov{{\rm Cov}}
+\def\Corr{{\rm Corr}}
+
+\def\T{{\top}}
+
+\def\vX{{\bf X}}
+\def\tX{{\tilde{\bf X}}}
+\def\vY{{\bf Y}}
+\def\tY{{\tilde{\bf Y}}}
+\def\vZ{{\bf Z}}
+
+\def\vu{{\bf u}}
+\def\v1{{\bf 1}}
+\def\ve{{\bf e}}
+
+\def\E{{\rm E}}
+\def\T{{\top}}
+\def\tr{{\rm tr}}
+
+
+\def\Var{{\rm Var}}
+\def\Cov{{\rm Cov}}
+\def\Corr{{\rm Corr}}
+\newcommand{\var}{{\rm Var}}
+
+\def\A{\tilde{A}}
+\def\a{\tilde{a}}
+\def\S{{\rm SWP}}
+\def\G{{\rm GJ}}
+\def\X{{\bf X}}
+\def\Y{{\bf Y}}
+\def\Z{{\bf Z}}
+\def\R{{\bf R}}
+\def\I{{\bf I}}
+
+\def\bbeta{\boldmath{\beta}}
+
+\title{A  Note on Overfitting in Regression and Classification}
+\author{Ying Nian Wu, UCLA Statistics}
+\date{Background materials for STATS 200A and 202A}
+ 
+\begin{document}
+ 
+\maketitle
+ 
+\tableofcontents
+
+\section{Regression and classification}
+
+\subsection{Data and model} 
+
+The dataset of  regression or classification consists of an $n \times p$ matrix $\X = (x_{ij})$, and a $n \times 1$ vector $\Y = (y_i)$.  In regression, $y_i$ is continuous. The  linear model is of the following form: 
+\[
+    y_i \approx  \sum_{j = 1}^{p} x_{ij} \beta_j. 
+\]
+In classification, $y_i$ is binary. The linear model is of the following form
+\[
+   y_i \approx {\rm sign}(\sum_{j = 1}^{p} x_{ij} \beta_j).
+\]
+Here we are deliberately ambiguous about the intercept term. If $x_{i1} = 1$ for all $i$, then $\beta_1$ will be the the intercept term. $[\X, \Y]$ is called the training data. $y_i$ is called response variable, outcome, dependent variable. $x_{ij}$ is called predictor, regressor, covariate, independent variable. In the experimental design setting, $\X$ is called the design matrix. 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+ obs & $\X_{n\times p}$ & $\Y_{n\times 1}$ \\
+\hline\hline
+ 1   & $x_{11}, x_{12}, ..., x_{1p}$         & $y_1$ \\
+ 2   & $x_{21}, x_{22}, ..., x_{2p}$         & $y_2$ \\
+...  &                 &\\
+$n$  &  $x_{n1}, x_{n2}, ..., x_{np}$        & $y_n$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+ obs & $\X_{n\times p}$ & $\Y_{n\times 1}$ \\
+\hline\hline
+ 1   & $X_1^\T$         & $y_1$ \\
+ 2   & $X_2^\T$         & $y_2$ \\
+...  &                 &\\
+$n$  &  $X_n^\T$        & $y_n$ \\
+\hline
+\end{tabular}
+\end{table}
+
+We can arrange the data in terms of $X_i^\T = (x_{ij}, j = 1, ..., p)$, where $X_i^\T$ is the $i$-th row of $\X$ . Here $X_i$ is not in bold font.  We can write the linear score as $X_i^\T \beta$, where $\beta = (\beta_{j}, j = 1, ..., p)^\T$.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+ obs & $\X_{n\times p}$ & $\Y_{n\times 1}$ \\
+\hline\hline
+$\begin{matrix} 1\\ 2\\...\\ n \end{matrix}$  & $\X_1, \X_2, ..., \X_p$         & $\Y$ \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+We can also arrange the data in terms of $\X_j = (x_{ij}, i = 1, ..., n)^\T$, where $\X_j$ is the $j$-th column of $\X$. Here $\X_j$ is in bold font.  We can write the linear regression model as $\Y \approx \sum_{j=1}^{p} \X_j \beta_j$,  and the linear classification model as $\Y \approx {\rm sign} ( \sum_{j=1}^{p} \X_j \beta_j)$, where the sign function is applied element-wise. 
+
+\subsection{Learning} 
+
+The process of estimating $\beta$ is called learning from the training data. The purpose is two-fold. 
+
+(1) Explanation: understanding the relationship between $y_i$ and $(x_{ij}, j = 1, ..., p)$. 
+
+(2) Prediction: learn to predict $y_i$ based on $(x_{ij}, j = 1, ..., p)$, so that in the testing stage, if we are given the predictor variables, we should be able to predict the outcome. 
+
+
+\section{Overfitting in regression} 
+
+\subsection{Least squares projection}
+
+We can write the linear regression model as $\Y = \X^{\T}\beta + \epsilon$. The least squares estimate of $\beta$ is 
+\[
+\hat{\beta} = \arg\min_{\beta} \|\Y - \X\bbeta\|^{2} = (\X^{\T}\X)^{-1}\X^{\T}\Y.
+\]
+If $\X^\T\X = I_p$, i.e., the $p$ column vectors of $\X$ are orthogonal, then $\hat{\beta} = \X^\T \Y$, i.e., $\hat{\beta}_j = \langle \Y, \X_j\rangle$. 
+
+\subsection{When $\Y$ is a noise vector} 
+
+If the true value of $\beta$ is 0, so that $\Y = \epsilon$. Let us assume $\epsilon \sim {\rm N}(0, I_n)$, where $I_n$ is the identity matrix of dimension $n$.  Thus $\E[\|\epsilon\|^2] = n$. Let us also assume $\X^\T \X  = I_p$ (we will take care of the scaling issue later). 
+
+The least squares estimate $\hat{\beta} = \X^\T \epsilon = \delta \sim {\rm N}(0, I_p)$. Thus $\E[\|\delta\|^2] = p$. $\delta$ is the projected coordinates of the noise vector $\epsilon$ onto the space spanned by $\X$.  The fitted value or the projected vector is $\hat{\epsilon} = \X \hat{\beta}  = \X \delta$. 
+
+The training error is 
+\[
+    \E[\|\epsilon - \hat{\epsilon}\|^2] = \E[\|\epsilon\|^2 - \|\hat{\epsilon}\|^2], 
+\]
+because of the Pythagarean theorem.  We know $\E[\|\epsilon\|^2] = n$, and $\E[\|\hat{\epsilon}\|^2] =  \E[\|\delta\|^2] = p$. Thus the training error is $n - p$. 
+    
+    
+Now consider the testing error. Let us assume that $\X$ is fixed, but the response vector in testing is an independent noise vector $\tilde{\epsilon} \sim {\rm N}(0, I_n)$, and $\Cov(\epsilon, \tilde{\epsilon}) = 0$. Then the testing error is 
+\[
+    \E[\|\tilde{\epsilon} - \hat{\epsilon}\|^2] = \E[\|\tilde{\epsilon}\|^2 + \|\hat{\epsilon}\|^2 - 2 \langle \tilde{\epsilon}, \hat{\epsilon}\rangle]. 
+\]
+Since $\E[\langle \tilde{\epsilon}, \epsilon\rangle] = 0$, the testing error is $n + p$. 
+
+The overfitting is testing error - training error, which is $2p$. 
+
+Now consider a general estimator $\hat{\beta}$ (not necessarily least squares) obtained by fitting $(\X, \epsilon)$. Let $\hat{\epsilon} = \X\hat{\beta}$ be the fitted vector of this general estimator. Then we don't have Pythagarean this time. But we can write the training error as 
+\[
+    \E[\|\epsilon - \hat{\epsilon}\|^2] = \E[\|\epsilon\|^2 + \|\hat{\epsilon}\|^2 - 2\langle \epsilon, \hat{\epsilon} \rangle]. 
+\]
+The difference between the testing error and training error is $2 \E[\langle \epsilon, \hat{\epsilon}\rangle]$, which is the overfitting. 
+
+The point is that you may be able to explain noises by overfitting the data in training, you will not be able to do so in testing. 
+
+\subsection{When $\Y$ has both signal and noise} 
+
+In real life, $y_i = f(x_{i1}, ..., x_{ip}) + \epsilon_i$. We can write $\Y = f + \epsilon$, where $f$ is a $n \times 1$ vector with $f_i = f(x_{i1}, ..., x_{ip})$. 
+
+The least squares estimator 
+\[
+\hat{\beta} = \X^\T \Y = \X^\T (f + \epsilon) = \X^\T f + \X^\T \epsilon = \beta_{\rm best} + \delta, 
+\]
+where $\beta_{\rm best} = \X^\T f$ is the best value of $\beta$ for explaining the signal. It is not observed or known. Again $\delta = \X^\T \epsilon$, and $\hat{\epsilon} = \X\delta$ is the noise absorbed by the model. 
+
+The training error is 
+\begin{eqnarray*}
+    \E[\|\Y - \X \hat{\beta}\|^2] &=& \E[\|(f + \epsilon) - (\X \beta_{\rm best} + \X \delta)\|^2]\\
+    &=& \|f - \X\beta_{\rm best}\|^2 + \E[\|\epsilon - \hat{\epsilon}\|^2] \\
+    &=&  \|f - \X\beta_{\rm best}\|^2 + (n-p), 
+ \end{eqnarray*}
+where the first term is the model bias, and  the second term is the same as in  the previous subsection. 
+
+For the testing error, again let us assume that $\X$ is fixed, but we observe a new response, which is $\tilde{\Y} = f + \tilde{\epsilon}$. Then 
+\begin{eqnarray*}
+    \E[\|\tilde{\Y} - \X \hat{\beta}\|^2] &=& \E[\|(f + \tilde{\epsilon}) - (\X \beta_{\rm best} + \X \delta)\|^2]\\
+    &=& \|f - \X\beta_{\rm best}\|^2 + \E[\|\tilde{\epsilon} - \hat{\epsilon}\|^2] \\
+    &=&  \|f - \X\beta_{\rm best}\|^2 + (n+p), 
+ \end{eqnarray*}
+where again the second term is the same as in the previous subsection. 
+
+Thus again the overfitting is $2p$. 
+
+If we increase the model complexity $p$ (by adding more predictors), the training error will keep decreasing. But for the testing error, if will decrease first, because the model bias decreases, but after a certain point, the testing error will begin to increase, because the decrease in the model bias cannot compensate for the increase in the second term. 
+
+Now consider a general estimator $\hat{\beta}$, which is computed from $(\X, \Y)$. The training error is 
+\begin{eqnarray*}
+    \E[\|\Y - \X \hat{\beta}\|^2] &=& \E[\|(f + \epsilon) - \X \hat{\beta}\|^2]. 
+ \end{eqnarray*}
+The testing error is 
+\begin{eqnarray*}
+    \E[\|\tilde{\Y} - \X \hat{\beta}\|^2] &=& \E[\|(f + \tilde{\epsilon}) - \X \hat{\beta}\|^2]. 
+ \end{eqnarray*}
+Again the overfitting is $2\E[\langle \epsilon, \hat{\epsilon}\rangle]$. Comparing it with the case for least squares, we may interpret $\E[\langle \epsilon, \hat{\epsilon}\rangle]$ as the effective degrees of freedom, which measures the capacity of the estimator to absorb the noises. 
+
+\subsection{Bias and variance tradeoff} 
+
+The testing error can be written as 
+\begin{eqnarray*}
+    \E[\|\tilde{\Y} - \X \hat{\beta}\|^2] &=& \E[\|(f + \tilde{\epsilon}) - \X \hat{\beta}\|^2] \\
+    &=& \|f - \X \beta_{\rm best}\|^2 + \E[\|\hat{\beta} - \beta_{\rm best}\|^2]  + \E[\|\tilde{\epsilon}\|^2]\\
+    &=&  \|f - \X \beta_{\rm best}\|^2  + \|\E[\hat{\beta}] - \beta_{\rm best}\|^2 + \E[\|\hat{\beta}-\E[\hat{\beta}]\|^2] + n, 
+ \end{eqnarray*}
+where the second term of the second line is the estimation error. For the third line, the first term is model bias, the second term is the estimator bias,  the third term is the estimator  variance, and the last term is the observation error. 
+
+For the least squares estimator, the second term is 0, and the third term is $p$. 
+
+For general estimator, the second term may be greater than 0, but the third term can be much smaller than $p$. 
+
+We want $p$ to be large to have small model bias. But we want our estimator to have some bias due to regularization, in order to greatly reduce the variance. 
+
+\subsection{Regularized estimators} 
+
+The least squares estimator minimizes $\|\Y - \X \beta\|^2$, which gives us 
+\[
+\hat{\beta}_{\rm LS} = \X^\T \Y  = \beta_{\rm best} + \delta \sim {\rm N}(\beta_{\rm best}, I_p),
+\] 
+where $\delta \sim {\rm N}(0, I_p)$. 
+
+The ridge regression minimizes $\|\Y - \X\beta\|^2 + \lambda \|\beta\|_{\ell_2}^2$, which gives us the shrinkage estimator $\X^\T \Y /(1+\lambda)$. The Stein estimator 
+\[
+     \hat{\beta}_{\rm Stein} = \hat{\beta}_{\rm LS}  \left(1 - \frac{p-2}{\|\hat{\beta}_{\rm LS}\|^2}\right)
+ \]
+is a special case of the shrinkage estimator, and it has the remarkable property that 
+\[
+\E[\|\hat{\beta}_{\rm Stein} - \beta_{\rm best}\|^2] \leq \E[\|\hat{\beta}_{\rm LS} - \beta_{\rm best}\|^2], 
+\]
+no matter what $\beta_{\rm best}$ is.  
+
+The Lasso estimator minimizes $\|\Y - \X\beta\|^2/2 + \lambda \|\beta\|_{\ell_1}$, which gives us the soft-thresholding estimator 
+ \[
+ \hat{\beta}_{j, {\rm Lasso}, \lambda} = {\rm sign}(\hat{\beta}_{j, {\rm LS}}) \max(0, |\hat{\beta}_{j, {\rm LS}}| - \lambda).
+ \]
+If we scale the data properly, we should have $\hat{\beta} = \beta_{\rm best} + \delta$, but $\delta \sim {\rm N}(0, I_p/n)$. Let us assume that $\beta_{\rm best}$ is sparse, so that only $s$ components of the $p$-dimensional $\beta_{\rm best}$ are non-zero. Then on the happy event
+\[
+     \max_{j = 1, ..., p} |\delta_j| \leq \lambda, 
+ \]
+  we have 
+  \[
+     \|\hat{\beta}_{\rm Lasso} - \beta_{\rm best}\|^2 \leq 4 s \lambda^2.
+  \]
+ We can choose $\lambda$ to make the probability of the happy event to be at least $1- \eta$, by letting 
+ \[
+    \Pr(\max_{j=1,...,p} \delta_j > \lambda) \leq p \Pr(\delta_j > \lambda) \leq 2p e^{-2n \lambda^2} = \eta, 
+ \]
+ so we can take 
+ \[
+    \lambda = \sqrt{(\log p + \log (2/\eta))/(2n)}. 
+ \]
+This estimator is doing almost as well as if we know which of the $p-s$ components of $\beta_{\rm best}$ are zero. 
+
+We want to emphasize that hypothesis testing is a form of regularization, which gives us the hard thresholding, 
+ \[
+ \hat{\beta}_{j, {\rm HT}, \lambda} = \hat{\beta}_{j, {\rm LS}} 1(|\hat{\beta}_{j, {\rm LS}}| > \lambda), 
+ \]
+ where HT stands for hypothesis testing or hard thresholding. 
+ 
+ We also want to emphasize that the regularization term corresponds to a Bayesian prior. For instance, the ridge regression corresponds to a prior $\beta \sim {\rm N}(0, \tau^2 I_p)$ for a $\tau^2$. 
+
+\section{Overfitting in classification}
+
+\subsection{Empirical risk minimization}
+
+We can write the linear classification model as $\Y \approx {\rm sign}( \X^{\T}\beta)$. We may estimate $\beta$ by minimizing the empirical risk
+\[
+\hat{\beta} = \arg\min_{\beta} \|\Y - {\rm sign}( \X\beta)\|^{2} 
+\]
+where ${\rm sign}(r) = +1$ if $r \geq 0$, and ${\rm sign}(r) = -1$ if $r < 0$. The sign function is applied element-wise. $\Y$ is a vector of +1 or -1, so is ${\rm sign}(\X\beta)$. Thus $\|\Y\|^2  = \|{\rm sign}(\X\beta)\|^2 = n$. 
+
+We can define the training error as 
+\[
+\|\Y - {\rm sign}(\X\beta)\|^2/(4n) = [\|\Y\|^2 + \|{\rm sign}(\X\beta)\|^2 - 2\langle \Y, {\rm sign}(\X\beta)\rangle]/(4n) = 1/2[1 - \langle \Y, {\rm sign}(\X\beta)\rangle/n]. 
+\]
+We can treat $ \langle \Y, {\rm sign}(\X\beta)\rangle/n$ as the training score. Minimizing the training error is the same as maximizing the training score. 
+ 
+We write in the above form in order to seek an analogy to the regression setting. It is not really used in practice, but it makes the theoretical understanding concrete. 
+
+
+\subsection{When $\Y$ is a noise vector} 
+
+Consider the special case $\Y = \epsilon$, where $\epsilon_i \sim {\rm Bernoulli}(1/2)$, i.e., $\Pr(\epsilon_i = +1) = \Pr(\epsilon_i = -1) = 1/2$. That is, $\epsilon$ is a sequence of independent coin flips. Suppose we estimate $\beta$ by maximizing the training score $\langle \Y, {\rm sign}(\X\beta)\rangle/n$ to obtain $\hat{\beta}$. Let $\hat{\epsilon} = {\rm sign}(\X\hat{\beta})$ be the fitted vector. Then the expected training score is $\E[\langle \epsilon, \hat{\epsilon}\rangle/n]$. 
+
+For testing, suppose we observe a testing vector $\tilde{\epsilon}$ of coin flips, which is independent of the training vector $\epsilon$. Then $\E[\langle \tilde{\epsilon}, \hat{\epsilon}\rangle] = 0$. Thus the overfitting is $\E[\langle \epsilon, \hat{\epsilon}\rangle/n]$, which is the same as in regression. This is called Rademacher complexity of the model. 
+
+\subsection{When $\Y$ has both signal and noise} 
+
+In the case of $y_i$ that may depend on $X_i$.  We can consider the following quantity as a measure of overfitting 
+\[
+    \E[\max_\beta \langle \Y \cdot \epsilon, {\rm sign}(\X\beta)\rangle /n]
+ \]
+ where again $\epsilon$ is a vector of Bernoulli random variables, where $\Y \cdot \epsilon$ is a vector of $y_i \epsilon_i$.  If $\epsilon_i = +1$, we may treat example $i$ as the ``training'' example, and if $\epsilon_i = -1$, we may treat example $i$ as the ``testing'' example.  Then $ \langle \Y \cdot \epsilon, {\rm sign}(\X\beta)\rangle /n$ is the difference between the ``training'' score and the ``testing'' score, which is overfitting.  This is commonly done in cross validation, where we randomly select some examples as ``training'' examples, and treat the rest as the ``testing'' examples. 
+ 
+ The key is that $y_i \epsilon_i$ is also a Bernoulli random variable., i.e., $\Y \cdot \epsilon$ has the same distribution as $\epsilon$.  Thus the overfitting is again $\E[\langle \epsilon, \hat{\epsilon}\rangle/n]$. 
+ 
+ The above reasoning is called symmetrization trick. 
+
+ 
+ \subsection{Tail bound} 
+ 
+Instead of expectation, we may also analyze the tail behavior of   $\langle \epsilon, \hat{\epsilon}\rangle/n$. 
+
+
+Suppose there are $K$ possible values of $\beta$, denoted by $\{\beta^{(k)}, k = 1, ..., K\}$. The training score is 
+\[
+    \max_{k = 1, ..., K} \frac{1}{n} \langle \epsilon, {\rm sign}(\X\beta^{(k)})\rangle.
+\]
+ According to the union bound and the Hoeffding inequality, 
+\[
+   \Pr\left(    \max_{k = 1, ..., K}\frac{1}{n}  \langle \epsilon, {\rm sign}(\X\beta^{(k)})\rangle > t\right) \leq K e^{-2n t^2}. 
+ \]
+ $K$ measures the model capacity. If we control $K$, then we control the overfitting. 
+ 
+One may wonder it may not be realistic to assume that there are only $K$ possible values of $\beta$. Actually it is very realistic. Consider the set ${\cal F} = \{{\rm sign}(\X\beta), \forall \beta\}$, for each $\beta$,  ${\rm sign}(\X\beta)$ is a binary sequence. There are at most $2^n$ such sequences. In fact the number of sequences in ${\cal F}$ is bounded by $(e n/p)^p$. Thus we can take $K = (en/p)^p$ in the above bound. 
+
+\subsection{General function class} 
+
+In the linear classifier, we assume $y_i \approx {\rm sign}(X_i^\T \beta)$, and the function class is ${\cal F} = \{f(X) = {\rm sign}(X^\T \beta), \forall \beta\}$. We can generalize the linear class to a more general function class ${\cal F} = \{f(X)\}$. Then the overfitting can be measured by the Rademacher complexity 
+\[
+      \E\left[\max_{f \in {\cal F}} \frac{1}{n} \sum_{i=1}^{n} \epsilon_i f(X_i)\right]. 
+ \]
+Or the so-called growth number $K$, which counts the number of  sequences in $\{(f(X_1), ..., f(X_n))^\T, \forall f \in {\cal F}\}$. Then according to the union bound and Hoeffding, the tail probability 
+\[
+     \Pr\left(\max_{f \in {\cal F}} \frac{1}{n} \sum_{i=1}^{n} \epsilon_i f(X_i) > t\right) \leq K e^{-2nt^2/2}. 
+\]
+Again this number $K$ is bounded by $(en/p)^p$, where $p$ is the 
+ VC dimension, which can be defined as the maximal number of coin flips that can be perfectly explained by finding $f \in {\cal F}$. For linear classifier, the VC dimension is $p$, the dimension of $\beta$. This is again analogous to regression, where the dimension $p$ is the number of noises that can be perfectly explained by least squares. The VC dimension and the Rademacher complexity are closely related to each other. 
+
+\subsection{Regularized estimators} 
+
+The support vector machine corresponds to the ridge regression that minimize the loss function 
+\[
+    \sum_{i=1}^{n} \max(0, 1-y_i X_i^\T\beta) + \lambda \|\beta\|_{\ell_2}^2. 
+\]
+The adaboost corresponds to the Lasso regression computed by coordinate descent on the loss function 
+\[
+    \sum_{i=1}^{n} \exp(-y_i X_i^\T \beta), 
+\]
+where $X_i$ is a vector of binary features (or weak classifiers). 
+
+\section{Take home message} 
+
+For both regression and classification, the overfitting can be measured by the capacity of the model to fit the noise vector, i.e., $\E[\langle \epsilon, \hat{\epsilon}\rangle]$, where $\hat{\epsilon}$ is computed from $(\X, \epsilon)$. $\hat{\epsilon}$ is the best fit the model can offer for $\epsilon$. 
+
+In regression, $\epsilon$ is a vector of Gaussian white noises. In classification, $\epsilon$ is a vector of Bernoulli coin flips. 
+
+We analyze both regression and classification by starting from the situation where $\Y = \epsilon$. We then analyze the more realistic situation where $\Y$ depends on $\X$. In both regression and classification, we reduce this realistic situation to the situation of noise vector. In regression, the reduction can be achieved by cancelation of the signal. In classification, the reduction is achieved by the symmetrization trick, which also targets cancellation of the signal. 
+
+The overfitting defines the model capacity, or model complexity, or effective degrees of freedom. 
+
+Stronger regularization (big $\lambda$) means: 
+
+(1) smaller effective model complexity or model capacity
+
+(2) bigger bias, smaller variance
+
+(3) bigger training error, smaller overfitting = testing error - training error. 
+
+
+We want 
+
+(1)  small testing error = training error + overfitting. 
+
+(2)  small mean square error = bias$^2$ + variance. 
+
+
+We can tune $\lambda$ by cross-validation. An over-regularized model may become too dumb, but an under-regularized model may grow superstitious. 
+
+
+
+\end{document}
