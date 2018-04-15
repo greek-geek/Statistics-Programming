@@ -1,0 +1,140 @@
+library("Stats202ABP")
+testing_Linear_Regression <- function(){
+## This function is not graded; you can use it to
+## test out the 'myLinearRegression' function
+## Define parameters
+n    <- 100
+p    <- 3
+## Simulate data from our assumed model.
+## We can assume that the true intercept is 0
+X    <- matrix(rnorm(n * p), nrow = n)
+beta <- matrix(1:p, nrow = p)
+Y    <- X %*% beta + rnorm(n)
+## Save R's linear regression coefficients
+R_coef  <- coef(lm(Y ~ X))
+## Save our linear regression coefficients
+my_coef <- myLM(X, Y)
+## Are these two vectors different?
+sum_square_diff <- sum((R_coef - my_coef)^2)
+if(sum_square_diff <= 0.001){
+return('Both results are identical')
+}else{
+return('There seems to be a problem...')
+}
+}
+print(testing_Linear_Regression())
+testing_Linear_Regression <- function(){
+## This function is not graded; you can use it to
+## test out the 'myLinearRegression' function
+## Define parameters
+n    <- 100
+p    <- 3
+## Simulate data from our assumed model.
+## We can assume that the true intercept is 0
+X    <- matrix(rnorm(n * p), nrow = n)
+beta <- matrix(1:p, nrow = p)
+Y    <- X %*% beta + rnorm(n)
+## Save R's linear regression coefficients
+R_coef  <- coef(lm(Y ~ X))
+## Save our linear regression coefficients
+my_coef <- myLM(X, Y)
+## Are these two vectors different?
+sum_square_diff <- sum((R_coef - my_coef)^2)
+if(sum_square_diff <= 0.001){
+return('Both results are identical')
+}else{
+return('There seems to be a problem...')
+}
+}
+print(testing_Linear_Regression())
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+setwd("D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7")
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+library("Rcpp")
+library("RcppArmadillo")
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+setwd("D:\Downloads(Lenovo)\Downloads\Documents\Scholar Strategy docs\UCLA\Statistical programming\Assignment3\mySweep.cpp")
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+setwd("D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment3/mySweep.cpp")
+setwd("D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment3")
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+setwd("D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7")
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline_new.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline_new.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline_new.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline_new.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')
+source('D:/Downloads(Lenovo)/Downloads/Documents/Scholar Strategy docs/UCLA/Statistical programming/Assignment7/Ridge_Spline.R')

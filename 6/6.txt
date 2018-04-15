@@ -1,0 +1,12 @@
+Submit the following files:
+
+1) Your R package, where you have added the standard errors of linear and logistic regression to the outputs of your functions. These functions can output a list where the first list element contains the coefficient vector and the second element contains the standard errors.
+
+2) Completed Rcpp script for sweep and QR.
+
+3) Completed R script for sweep, QR, ridge regression, spline regression.
+
+4) For comparing R vs Cpp, QR vs sweep, please use spline regression, where the number of predictors is large. You can just report the time for you to finish the spline regression using the competing methods.
+
+
+5) Plots of the fitted ridge regression and spline regression curves on top of the observed data points for different lambdas. Also plot the training and testing errors over a range of lambda values. 

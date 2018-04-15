@@ -1,0 +1,512 @@
+c
+c = LogisticRegression(x, y)
+install.packages("C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/Packages/Stats202A_0.0.0.9000.tar.gz")
+install.packages("C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/Packages/Stats202A_0.0.0.9000.tar.gz")
+LinearRegression(x, y)
+library(iris)
+dataset(iris)
+load(iris)
+load(datasets)
+datasets()
+load(iris)
+datasets::iris
+x = datasets::iris
+x
+a = x[, 1:4]
+a
+library(Stats202A)
+p = PCA(a)
+a = as.matrix(x[, 1:4])
+a
+p = PCA(a)
+a = as.matrix(x[1:4, 1:4])
+a
+p = PCA(a)
+p
+n    <- 100
+#     p    <- 3
+#
+#     ## Simulate data from our assumed model.
+#     ## We can assume that the true intercept is 0
+#     X    <- matrix(rnorm(n * p), nrow = n)
+R_coef  <- eigen(t(X) %*% X)
+n = 100
+p = 3
+x = matrix(rnorm(n*p), nrow = n)
+rcoef = eigen(t(X)%*%X)
+rcoef = eigen(t(x)%*%x)
+rcoef
+rcoef = eigen(t(a)%*%a)
+rcoef
+clear
+i = datasets::iris
+i = as.matrix(i)
+i
+i = datasets::iris
+i
+a = i[, 1:4]
+a
+a = as.matrix(i[, 1:4])
+a
+library(Stats202A)
+p = PCA(t(a)%*%a)
+p
+e = eigen(t(a)%*%a)
+e
+s = datasets::swiss
+s
+swiss <- datasets::swiss
+x <- model.matrix(Fertility~., swiss)[,-1]
+y <- swiss$Fertility
+lambda <- 10^seq(10, -2, length = 100)
+library(Stats202A)
+library(Stats202A)
+install.packages(Stats202A)
+swiss <- datasets::swiss
+x <- model.matrix(Fertility~., swiss)[,-1]
+y <- swiss$Fertility
+lambda <- 10^seq(10, -2, length = 100)
+library(Stats202A)
+Lasso(x, y, lambda)
+library(devtools)
+library(roxygen2)
+library(Stats202A)
+l = Lasso()
+getwd()
+document()
+document()
+document()
+swiss <- datasets::swiss
+x <- model.matrix(Fertility~., swiss)[,-1]
+y <- swiss$Fertility
+lambda <- 10^seq(10, -2, length = 100)
+library(Stats202A)
+l = Lasso(x, y, lambda)
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+library(Stats202A)
+iris = datasets::iris
+iris
+iris = datasets::iris
+a = as.matrix(iris[, 1:4])
+a
+iris = datasets::iris
+a = as.matrix(iris[, 1:4])
+p = PCA(a)
+p = PCA(t(a)%*%a)
+p
+e = eigen(t(a)%*%a)
+e
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+load(datasets)
+load(dataset)
+n         <- 50
+p         <- 25
+beta      <- rep(0,p)
+beta[1:5] <- 1:5/5
+X <- matrix(rnorm(n*p),n,p)
+X <- scale(X)
+Xb <- X%*%beta
+Y <- X%*%beta+rnorm(n)
+Y <- Y-mean(Y)
+n = 50
+p = 200
+s = 10
+T = 10
+lambda_all = (100:1)*10
+X = matrix(rnorm(n*p), nrow=n)
+beta_true = matrix(rep(0, p), nrow = p)
+beta_true[1:s] = 1:s
+Y = X %*% beta_true + rnorm(n)
+beta_all = myLasso(X, Y, lambda_all)
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+myLasso(X, Y, lambda_all)
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+myLasso(X, Y, lambda_all)
+data()
+data("women")
+head(women)
+women = datasets::women
+women
+women = datasets::women
+women = datasets::women
+women
+x = as.matrix(women[, 1])
+x
+y = as.matrix(women[, 2])
+y
+women = datasets::women
+x = as.matrix(women[, 1])
+y = as.matrix(women[, 2])
+library(Stats202A)
+lr = LinearRegression(X, Y)
+data()
+data("Titanic")
+head(Titanic)
+datasets::Titanic
+datasets::swiss
+datasets::iris
+datasets::cars
+datasets::mtcars
+swiss = datasets::swiss
+swiss
+x = as.matrix(swiss[, 2:6])
+x
+y = as.matrix(swiss[, 1])
+y
+x = as.matrix(swiss[, 2:5])
+x
+x = as.matrix(swiss[, 2:6])
+x = as.matrix(swiss[, 1:5])
+x
+x = as.matrix(swiss[, 2:6])
+x
+LinearRegression(x, y)
+coef(lm(y ~ x))
+swiss = datasets::swiss
+x = as.matrix(swiss[, 2:6])
+y = as.matrix(swiss[, 1])
+LinearRegression(x, y)
+coef(lm(y ~ x))
+LogisticRegression(x, y)
+LogisticRegression(x, y)
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/4/Logistic_Regression.R')
+myLogistic(x, y)
+datasets::iris
+LogisticRegression(x, y)
+datasets::Titanic
+data("Titanic")
+head(Titanic)
+data(Titanic)
+head(Titanic)
+load(Titanic)
+t = datasets::Titanic
+t
+t[, 1]
+t[, 2]
+t[1, 1]
+datasets::UCBAdmissions
+datasets::ToothGrowth
+mydata <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
+mydata
+x = mydata[, 2:4]
+y = mydata[, 1]
+LogisticRegression(x, y)
+y = as.matrix(mydata[, 1])
+x = as.matrix(mydata[, 2:4])
+LogisticRegression(x, y)
+mydata <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
+mydata = mydata[-5]
+x = as.matrix(mydata[,2:4])
+y = as.matrix(mydata[,1])
+x[,1] = (x[,1] - mean(x[,1]))/sd(x[,1])
+x[,2] = (x[,2] - mean(x[,2]))/sd(x[,2])
+x[,3] = (x[,3] - mean(x[,3]))/sd(x[,3])
+LogisticRegression(x, y)
+print(glm(formula = y ~ x + 0,  family="binomial"))
+swiss = datasets::swiss
+x = as.matrix(swiss[, 2:6])
+y = as.matrix(swiss[, 1])
+LinearRegression(x, y)
+library(Stats202A)
+LinearRegression(x, y)
+library(Stats202A)
+LinearRegression(x, y)
+swiss = datasets::swiss
+x = as.matrix(swiss[, 2:6])
+y = as.matrix(swiss[, 1])
+LinearRegression(x, y)
+plot(X, Y, type = "b", xlab = 'X', ylab = 'Y')
+plot(x, Y, type = "b", xlab = 'X', ylab = 'Y')
+plot(x, y, type = "b", xlab = 'X', ylab = 'Y')
+x
+n = 50
+p = 200
+s = 10
+T = 10
+lambda_all = (100:1)*1
+X = matrix(rnorm(n*p), nrow=n)
+beta_true = matrix(rep(0, p), nrow = p)
+beta_true[1:s] = 1:s
+Y = X %*% beta_true + rnorm(n)
+beta_all = myLasso(X, Y, lambda_all)
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+X = matrix(rnorm(n*p), nrow=n)
+beta_true = matrix(rep(0, p), nrow = p)
+beta_true[1:s] = 1:s
+Y = X %*% beta_true + rnorm(n)
+beta_all = myLasso(X, Y, lambda_all)
+beta_all
+n = 50
+p = 200
+s = 1
+T = 1
+lambda_all = (100:1)*1
+X = matrix(rnorm(n*p), nrow=n)
+beta_true = matrix(rep(0, p), nrow = p)
+beta_true[1:s] = 1:s
+Y = X %*% beta_true + rnorm(n)
+beta_all = myLasso(X, Y, lambda_all)
+beta_all
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+n = 50
+p = 200
+s = 10
+T = 10
+lambda_all = (100:1)*10
+X = matrix(rnorm(n*p), nrow=n)
+beta_true = matrix(rep(0, p), nrow = p)
+beta_true[1:s] = 1:s
+Y = X %*% beta_true + rnorm(n)
+beta_all = myLasso(X, Y, lambda_all)
+install(glmnet)
+install.packages(glmnet)
+install.packages('glmnet')
+library(glmnet)
+glmnet(x, y)
+g = glmnet(x, y)
+plot(g)
+g = glmnet(x, y)
+g = glmnet(X, Y)
+plot(g)
+n = 50
+p = 200
+s = 10
+T = 10
+lambda_all = (100:1)*10
+X = matrix(rnorm(n*p), nrow=n)
+beta_true = matrix(rep(0, p), nrow = p)
+beta_true[1:s] = 1:s
+Y = X %*% beta_true + rnorm(n)
+beta_all = myLasso(X, Y, lambda_all)
+plot(g)
+n = 50
+p = 200
+s = 10
+T = 10
+lambda_all = (100:1)*10
+X = matrix(rnorm(n*p), nrow=n)
+beta_true = matrix(rep(0, p), nrow = p)
+beta_true[1:s] = 1:s
+Y = X %*% beta_true + rnorm(n)
+beta_all = myLasso(X, Y, lambda_all)
+plot(g)
+datasets::swiss
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/7/Lasso.R')
+data()
+datasets::mtcars
+datasets::cars
+swiss <- datasets::swiss
+x = model.matrix(Fertility~., swiss)[,-1]
+y = swiss$Fertility
+lambda = 10^seq(10, -2, length = 100)
+library(glmnet)
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/6/Ridge_Spline.R')
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/6/Ridge_Spline.R')
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/6/Ridge_Spline.R')
+myRidge(x, y, lambda)
+abline(lm(y~x), col='blue')
+x1 = x[, -1]
+x1
+x1 = as.matrix(x[, -1])
+x1
+datasets::iris
+data()
+datasets::ChickWeight
+iris = datasets::iris
+iris
+a = as.matrix(iris[, 1:4])
+p = PCA(a)
+p = PCA(t(a)%*%a)
+p
+e = eigen(t(a)%*%a)
+e
+mydata <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
+x = as.matrix(mydata[,2:4])
+mydata
+head(mydata)
+head(iris)
+x = as.matrix(mydata[,2:4])
+y = as.matrix(mydata[,1])
+x[,1] = (x[,1] - mean(x[,1]))/sd(x[,1])
+x[,2] = (x[,2] - mean(x[,2]))/sd(x[,2])
+x[,3] = (x[,3] - mean(x[,3]))/sd(x[,3])
+LogisticRegression(x, y)
+print(glm(formula = y ~ x + 0,  family="binomial"))
+swiss = datasets::swiss
+head(swiss)
+x = as.matrix(swiss[, 2:6])
+y = as.matrix(swiss[, 1])
+LinearRegression(x, y)
+coef(lm(y ~ x))
+plot(x[, 1], y, xlab='Agriculture', ylab='Fertility', type = 'd')
+plot(x[, 1], y, xlab='Agriculture', ylab='Fertility')
+plot(x[, 1], y, xlab='Agriculture', ylab='Fertility', col='blue')
+plot(x[, 2], y, xlab='Agriculture', ylab='Fertility', col='blue')
+plot(x[, 3], y, xlab='Agriculture', ylab='Fertility', col='blue')
+plot(x[, 3], y, xlab='Agriculture', ylab='Fertility', col='blue')
+plot(x[, 4], y, xlab='Agriculture', ylab='Fertility', col='blue')
+plot(x[, 2], y, xlab='Agriculture', ylab='Fertility', col='blue')
+plot(x[, 2], y, xlab='Examination', ylab='Fertility', col='blue')
+plot(x[, 1], y, xlab='Agriculture', ylab='Fertility', col='blue')
+plot(x[, 3], y, xlab='Education', ylab='Fertility', col='blue')
+plot(x[, 4], y, xlab='Catholic', ylab='Fertility', col='blue')
+plot(x[, 5], y, xlab='Catholic', ylab='Infant.Mortality', col='blue')
+plot(x[, 5], y, xlab='Catholic', ylab='Infant.Mortality', col='blue')
+plot(x[, 5], y, xlab='Catholic', ylab='Infant.Mortality', col='blue')
+plot(x[, 5], y, xlab='Infant.Mortality', ylab='Fertility', col='blue')
+swiss <- datasets::swiss
+help(swiss)
+head(swiss)
+x = model.matrix(Fertility~., swiss)[,-1]
+y = swiss$Fertility
+lambda = 10^seq(10, -2, length = 100)
+library(glmnet)
+set.seed(489)
+train = sample(1:nrow(x), nrow(x)/2)
+test = (-train)
+ytest = y[test]
+swisslm = lm(Fertility~., data = swiss)
+coef(swisslm)
+lambda = 0.1
+ridge_R = glmnet(x[train,], y[train], alpha = 0, lambda= lambda)
+ridge_P = myRidge(x[train,],y[train],lambda)
+source('C:/Users/shraddha_m26/Desktop/Stats Programming/Assignments/6/Ridge_Spline.R')
+ridge_P = myRidge(x[train,],y[train],lambda)
+ridge_R
+ridge_P
+coef(ridge_R)
+data("mtcars")
+mtcars = datasets::mtcars
+head(mtcars)
+x = mtcars$hp
+x = as.matrix(mtcars$hp)
+y = as.matrix(mtcars$vs)
+LogisticRegression(x, y)
+x = (x - mean(x))/std(x)
+x = (x - mean(x))/sd(x)
+LogisticRegression(x, y)
+print(glm(formula = y ~ x + 0, family="binomial"))
+plot(vs ~ hp, data=mtcars, color='red')
+plot(vs ~ hp, data=mtcars, col='red')
+plot(vs ~ hp, data=mtcars, type='line')
+plot(vs ~ hp, data=mtcars, type='line')
+lines(vs ~ hp, newdat, col="green4", lwd=2)
+plot(vs ~ hp, data=mtcars, col='red')
+lines(vs ~ hp, newdat, col="green4", lwd=2)
+fit = glm(vs ~ hp, data=mtcars, family=binomial)
+newdat <- data.frame(hp=seq(min(mtcars$hp), max(mtcars$hp),len=100))
+newdat$vs = predict(fit, newdata=newdat, type="response")
+plot(vs~hp, data=mtcars, col="red4")
+lines(vs ~ hp, newdat, col="green4", lwd=2)
+swiss <- datasets::swiss
+x <- model.matrix(Fertility~., swiss)[,-1]
+y <- swiss$Fertility
+lambda <- 10^seq(10, -2, length = 100)
+library(glmnet)
+set.seed(489)
+train = sample(1:nrow(x), nrow(x)/2)
+test = (-train)
+ytest = y[test]
+swisslm <- lm(Fertility~., data = swiss)
+coef(swisslm)
+lasso.mod <- glmnet(x[train,], y[train], alpha = 1, lambda = lambda)
+my_lasso <- Lasso(x[train,], y[train], lambda = lambda)
+library(Stats202A)
+my_lasso <- Lasso(x[train,], y[train], lambda = lambda)
+library(Stats202A)
+my_lasso <- Lasso(x[train,], y[train], lambda = lambda)
+my_lasso <- Lasso(x[train,], y[train], lambda)
+my_lasso <- Lasso(x[train,], y[train], lambda_all = lambda)
+lambda
+swiss <- datasets::swiss
+x <- model.matrix(Fertility~., swiss)[,-1]
+y <- swiss$Fertility
+lambda <- 10^seq(10, -2, length = 100)
+set.seed(489)
+train = sample(1:nrow(x), nrow(x)/2)
+test = (-train)
+ytest = y[test]
+swisslm <- lm(Fertility~., data = swiss)
+coef(swisslm)
+my_lasso <- Lasso(x[train,], y[train], lambda = lambda)
+library(Stats202A)
+my_lasso <- Lasso(x[train,], y[train], lambda = lambda)
+library(Stats202A)
+swiss <- datasets::swiss
+x <- model.matrix(Fertility~., swiss)[,-1]
+y <- swiss$Fertility
+lambda <- 10^seq(10, -2, length = 100)
+library(glmnet)
+set.seed(489)
+train = sample(1:nrow(x), nrow(x)/2)
+test = (-train)
+ytest = y[test]
+swisslm <- lm(Fertility~., data = swiss)
+coef(swisslm)
+lasso.mod <- glmnet(x[train,], y[train], alpha = 1, lambda = lambda)
+lasso.pred <- predict(lasso.mod, s = bestlam, newx = x[test,])
+mean((lasso.pred-ytest)^2)
+lasso.mod
+my_lasso = myLasso(x[train], y[train], lambda)
+library(Stats202A)
+swiss <- datasets::swiss
+x <- model.matrix(Fertility~., swiss)[,-1]
+y <- swiss$Fertility
+lambda <- 10^seq(10, -2, length = 100)
+set.seed(489)
+train = sample(1:nrow(x), nrow(x)/2)
+test = (-train)
+ytest = y[test]
+swisslm <- lm(Fertility~., data = swiss)
+coef(swisslm)
+my_lasso = myLasso(x[train], y[train], lambda)
+library(Stats202A)
+swiss <- datasets::swiss
+x <- model.matrix(Fertility~., swiss)[,-1]
+y <- swiss$Fertility
+lambda <- 10^seq(10, -2, length = 100)
+library(glmnet)
+set.seed(489)
+train = sample(1:nrow(x), nrow(x)/2)
+test = (-train)
+ytest = y[test]
+swisslm <- lm(Fertility~., data = swiss)
+coef(swisslm)
+lasso.mod <- glmnet(x[train,], y[train], alpha = 1, lambda = lambda)
+library(Stats202A)
+library(Stats202A)
+myLasso <- Lasso()
+install.packages(Stats202A)
+library(Stats202A)
+lasso.mod <- glmnet(x[train,], y[train], alpha = 1, lambda = lambda)
+library(Stats202A)
+help(iris)
+help(swiss)
+library(Stats202A)
+library(Stats202A)
+?Lasso
+library(devtools)
+library(roxygen2)
+document()
+document()
+document()
+document()
+document()
+document()
+document()
+document()
+document()
+document()
+setwd(..)
+setwd('..')
+install()
+install("Stats202A")
+library(Stats202A)
